@@ -1,21 +1,7 @@
 <?php
 echo '<pre>';
 $arr = load_file('movies');
-$i = 0;
-$movies[$i]['name'] = '';
-$movies[$i]['category'] = '';
-foreach ($arr as $value) {
-    
-    $movies[$i]['name'] = $value[1];
-    $movies[$i]['category'] = $value[2];
-    if(isset($value[3])){
-        $movies[$i]['category'] .= '|'.$value[3];
-    }
-    $i++;
-    
-}
-var_dump($movies);
-
+print_r(write_movies($arr));
 echo '</pre>';    
 
 
@@ -27,6 +13,21 @@ function load_file ($file_name){
         $movies[$i] = explode('::',fgets($arr));
         $i++;
         
+    }
+    return $movies;
+}
+
+function write_movies($arr){
+    $i = 0;
+    $movies[$i]['name'] = '';
+    $movies[$i]['category'] = '';
+    foreach ($arr as $value) {
+        $movies[$i]['name'] = $value[1];
+        $movies[$i]['category'] = $value[2];
+        if(isset($value[3])){
+            $movies[$i]['category'] .= '|'.$value[3];
+        }
+    $i++;
     }
     return $movies;
 }
