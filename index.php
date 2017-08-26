@@ -1,7 +1,8 @@
 <?php
 echo '<pre>';
 $arr = load_file('movies');
-print_r(write_movies($arr));
+$movies = write_movies($arr);
+var_dump($movies);
 echo '</pre>';    
 
 
@@ -12,7 +13,6 @@ function load_file ($file_name){
     while (!feof($arr)){
         $movies[$i] = explode('::',fgets($arr));
         $i++;
-        
     }
     return $movies;
 }
